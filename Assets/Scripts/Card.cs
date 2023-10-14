@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Card
 {
+    //TODO: Make scriptable object
     [Header("Card Details")]
     [SerializeField] private string name;
     [SerializeField] private string description;
