@@ -15,8 +15,6 @@ public class Deck
 
     public void Shuffle()
     {
-        Debug.LogError("Shuffle not implemented!");
-        
         for(int i = 0; i < deck.Count; i++)
         {
             int toReplace = Random.Range(0, deck.Count - 1);
