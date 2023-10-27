@@ -16,5 +16,4 @@ public class CardBase : ScriptableObject
     public Sprite CardImageSprite;
     public Sprite CardBackgroundSprite;
     public Sprite CardBorderSprite;
-
 }
