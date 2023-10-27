@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8cb3f5e5ee1c31409f92ed140b30405, type: 3}
+  m_Name: Test Card
+  m_EditorClassIdentifier: 
+  cardName: Test Card
+  cardDescription: This card is used for testing only. This is the description of
+    the test card. Why are you reading this there is nothing useful written in this
+    box. Okay whatever keep reading then - it literally doesn't affect me I wrote
+    this in the past and that won't change whether you continue reading or not. Why
+    are you still reading ffs. You're just doing it to prove a point now aren't you?
+    Fine you win. But let it be known, you read this whole paragraph just to get
+    to the end read the word "poop".
+  MaxHp: 5
+  Damage: 2
+  CardImageSprite: {fileID: 0}
+  CardBackgroundSprite: {fileID: 0}
+  CardBorderSprite: {fileID: 0}
