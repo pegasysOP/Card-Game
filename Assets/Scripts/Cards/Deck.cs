@@ -37,9 +37,7 @@ public class Deck
         for(int i = 0; i < cardSet.Count; i++)
         {
             int toReplace = Random.Range(0, cardSet.Count);
-            Card temp = cardSet[i];
-            cardSet[i] = cardSet[toReplace];
-            cardSet[toReplace] = temp;
+            (cardSet[toReplace], cardSet[i]) = (cardSet[i], cardSet[toReplace]);
         }
     }
 
