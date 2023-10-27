@@ -8,6 +8,8 @@ public class Deck
 
     private Queue<Card> drawQueue;
 
+    private Stack<Card> discardStack;
+
     public Deck(List<Card> cards)
     {
         Init(cards);
@@ -81,11 +83,9 @@ public class Deck
             if (drawQueue.Count == 0)
                 return false;
 
-            drawQueue.Dequeue(); // Maybe this should put the cards into a discard pile, to be used in future mechanics? - Sam
+           discardStack.Push(drawQueue.Dequeue()); // We should do something with this discardStack in future
         }
 
         return true;
     }
-
-
 }
