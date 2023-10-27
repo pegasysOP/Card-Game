@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Card : MonoBehaviour
@@ -35,15 +33,14 @@ public class Card : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Debug.Log("RAYCAST");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-       
+
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
             if (hitInfo.collider.tag == "Card")
             {
                 isDragging = true;
-                offset = this.transform.position - hitInfo.point;
+                offset = transform.position - hitInfo.point;
             }            
         }
 
@@ -51,6 +48,11 @@ public class Card : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+
+        //Return card to its original z coordinate
+        //Vector3 newPosition = this.transform.position;
+        //newPosition.z = 0f;
+        //this.transform.position = newPosition;
 
         //Perform any logic to place the card down in a reasonable location. For now just do nothing. 
 
@@ -61,7 +63,9 @@ public class Card : MonoBehaviour
     private void DragCard()
     {
         //TODO: Add intertia or tweak delay on mouse drag compared to actual mouse position.
-        Vector3 newPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
+
+        //We must ensure that we are outside the clipping plane of the camera when we try and drag the object
+        Vector3 newPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 10f)) + offset;
         newPosition.z = this.transform.position.z;
         this.transform.position = newPosition;
     }
