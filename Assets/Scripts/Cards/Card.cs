@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[System.Serializable]
 public class Card : MonoBehaviour
 {
     [SerializeField] private CardBase cardBase;

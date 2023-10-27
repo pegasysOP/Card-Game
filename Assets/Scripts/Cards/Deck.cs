@@ -4,32 +4,87 @@ using UnityEngine;
 
 public class Deck
 {
-    [SerializeField] private List<Card> deck;
+    [SerializeField] private List<Card> cardSet;
 
-    public Deck()
+    private Queue<Card> drawQueue;
+
+    public Deck(List<Card> cards)
     {
-        deck = new List<Card>();
+        Init(cards);
     }
 
-    public void Shuffle()
+    /// <summary>
+    /// Initialise the deck with the set of cards provided - adds all cards to the draw queue
+    /// </summary>
+    /// <param name="cards"></param>
+    public void Init(List<Card> cards)
     {
-        for(int i = 0; i < deck.Count; i++)
+        cardSet = cards;
+        ShuffleSet();
+
+        if (drawQueue == null)
+            drawQueue = new Queue<Card>();
+
+        drawQueue.Clear();
+
+        foreach (Card card in cardSet)
+            drawQueue.Enqueue(card);
+    }
+    
+    // this probably wants to be shuffling the queue instead of the card set - Sam
+    public void ShuffleSet()
+    {
+        for(int i = 0; i < cardSet.Count; i++)
         {
-            int toReplace = Random.Range(0, deck.Count);
-            Card temp = deck[i];
-            deck[i] = deck[toReplace];
-            deck[toReplace] = temp;
+            int toReplace = Random.Range(0, cardSet.Count);
+            Card temp = cardSet[i];
+            cardSet[i] = cardSet[toReplace];
+            cardSet[toReplace] = temp;
         }
     }
 
     public void Add(Card card)
     {
-        deck.Add(card);
+        // not sure what this should do just yet - Sam
     }
 
-    public void Discard(Card card)
+    /// <summary>
+    /// Places <paramref name="quantity"/> cards from the draw queue into <paramref name="drawnCards"/>
+    /// </summary>
+    /// <param name="drawnCards">Location for drawn cards to be placed - any previous contents will be erased</param>
+    /// <param name="quantity">Number of cards to draw - willl draw until queue is empty, or quantity is met</param>
+    /// <returns>false if there weren't enough cards to draw</returns>
+    public bool Draw(out List<Card> drawnCards, int quantity = 1)
     {
-        deck.Remove(card);
+        drawnCards = new List<Card>();
+
+        for (int i = 0; i < quantity; i++)
+        {
+            if (drawQueue.Count == 0)
+                return false;
+
+            drawnCards.Add(drawQueue.Dequeue());
+        }
+
+        return true;
+    }
+
+    /// <summary>
+    /// Discards <paramref name="quantity"/> cards from the draw queue
+    /// </summary>
+    /// <param name="quantity">Number of cards to draw - will discard until queue is empty, or quantity is met</param>
+    /// <returns>false if there weren't enough cards to discard</returns>
+    public bool Discard(int quantity)
+    {
+        for (int i = 0; i < quantity; i++)
+        { 
+            if (drawQueue.Count == 0)
+                return false;
+
+            drawQueue.Dequeue(); // Maybe this should put the cards into a discard pile, to be used in future mechanics? - Sam
+        }
+
+        return true;
     }
 
 
