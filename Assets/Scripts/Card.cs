@@ -1,31 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Card
+public class Card : MonoBehaviour
 {
-    //TODO: Make scriptable object
-    [Header("Card Details")]
-    [SerializeField] private string name;
-    [SerializeField] private string description;
+    [SerializeField] private CardObject cardData;
+    
+    private GameObject cardGO;
 
-    [Header("Card Attributes")]
-    [SerializeField] private int cost;
-    [SerializeField] private int damage;
-    [SerializeField] private int healing;
+    [SerializeField] private int health;
 
-    [Header("Card Styling")]
-    [SerializeField] private Sprite cardImageSprite;
-    [SerializeField] private Sprite cardBackgroundSprite; 
-
-    public Card(string name, string desc, int cost, int dmg, int healing, Sprite imgSprite, Sprite backgroundSprite)
+    private void Start()
     {
-        this.name = name;
-        this.description = desc;
-        this.cost = cost;
-        this.damage = dmg;
-        this.healing = healing;
-        this.cardImageSprite = imgSprite;
-        this.cardBackgroundSprite = backgroundSprite;
+        cardGO = this.gameObject;
+        health = cardData.MaxHealth;
+    }
+
+    private void Update()
+    {
+        
+    }
+
+    private void DragCard()
+    {
+
+    }
+
+    private void MoveCardInHand()
+    {
+
     }
 }
