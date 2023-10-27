@@ -46,6 +46,8 @@ public class Deck
     public void Add(Card card)
     {
         // not sure what this should do just yet - Sam
+
+        //For now we will have a finite deck so there is no need to add extra cards to the deck. However this could change in future and then we would want to use this method - Lewis
     }
 
     /// <summary>
