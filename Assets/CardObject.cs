@@ -10,8 +10,8 @@ public class CardObject : ScriptableObject
     [SerializeField] private string CardDescription;
 
     [Header("Attributes")]
-    [SerializeField] private int CardHealth;
-    [SerializeField] private int CardDamage;
+    [SerializeField] public int MaxHealth;
+    [SerializeField] private int Damage;
 
     [Header("Visuals")]
     [SerializeField] private Sprite CardImageSprite;
