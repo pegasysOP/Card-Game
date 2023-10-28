@@ -37,6 +37,6 @@ public class Config : MonoBehaviour
         //AudioManager.instance.SetVolume(volume);
         QualitySettings.shadowResolution = (ShadowResolution)shadowQuality;
         Screen.fullScreen = Constants.startInFullScreen;
-        Screen.SetResolution(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, Constants.startInFullScreen);
+        Screen.SetResolution(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT, Constants.startInFullScreen);
     }
 }

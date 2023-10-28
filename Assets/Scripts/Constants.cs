@@ -12,8 +12,13 @@ public static class Constants
     #endregion
 
     #region Screen
-    public const int VIEWPORT_WIDTH = 1920;
-    public const int VIEWPORT_HEIGHT = 1080;
+    public const int WINDOW_WIDTH = 1920;
+    public const int WINDOW_HEIGHT = 1080;
     public const bool startInFullScreen = false;
+    #endregion
+
+    #region Graphics
+    public const int TEXTURE_WIDTH = 3840;
+    public const int TEXTURE_HEIGHT = 2160;
     #endregion
 }
