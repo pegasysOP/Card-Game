@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.VirtualTexturing;
 
 public class Config : MonoBehaviour
 {
@@ -19,6 +18,7 @@ public class Config : MonoBehaviour
         instance = this;
         volume = 100;
         shadowQuality = ShadowQuality.Low;
+        ApplyConfig();
     }
 
     public void SetVolume(int volume)
@@ -36,5 +36,7 @@ public class Config : MonoBehaviour
         SetVolume(volume);
         //AudioManager.instance.SetVolume(volume);
         QualitySettings.shadowResolution = (ShadowResolution)shadowQuality;
+        Screen.fullScreen = Constants.startInFullScreen;
+        Screen.SetResolution(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT, Constants.startInFullScreen);
     }
 }
