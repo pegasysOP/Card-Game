@@ -42,3 +42,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: PickedUpCard
+    uniqueID: 1526261079
+    locked: 0

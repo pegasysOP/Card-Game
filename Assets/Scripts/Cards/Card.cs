@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [System.Serializable]
 public class Card : MonoBehaviour
@@ -8,6 +9,10 @@ public class Card : MonoBehaviour
 
     private bool isDragging;
     private Vector3 offset;
+
+    //Potentially have a constants (config) file or store these in game manager eventually - Lewis
+    private const string CARD_PICK_UP_LAYER = "PickedUpCard";
+    private const string DEFAULT_LAYER = "Default";
 
     #region Attributes
     public string Name { get { return cardBase.cardName; } }
@@ -42,6 +47,7 @@ public class Card : MonoBehaviour
             {
                 isDragging = true;
                 offset = transform.position - hitInfo.point;
+                this.gameObject.GetComponent<SortingGroup>().sortingLayerName = CARD_PICK_UP_LAYER;
             }            
         }
 
@@ -49,6 +55,8 @@ public class Card : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+
+        this.gameObject.GetComponent<SortingGroup>().sortingLayerName = DEFAULT_LAYER;
 
         //Return card to its original z coordinate
         //Vector3 newPosition = this.transform.position;
