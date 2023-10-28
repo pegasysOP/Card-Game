@@ -13,6 +13,7 @@ public class Card : MonoBehaviour
     //Potentially have a constants (config) file or store these in game manager eventually - Lewis
     private const string CARD_PICK_UP_LAYER = "PickedUpCard";
     private const string DEFAULT_LAYER = "Default";
+    private const string CARD_TAG = "Card";
 
     #region Attributes
     public string Name { get { return cardBase.cardName; } }
@@ -43,7 +44,7 @@ public class Card : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.CompareTag("Card"))
+            if (hitInfo.collider.CompareTag(CARD_TAG))
             {
                 isDragging = true;
                 offset = transform.position - hitInfo.point;
