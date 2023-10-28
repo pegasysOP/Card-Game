@@ -51,9 +51,9 @@ public class Config : MonoBehaviour
         Camera.main.aspect = Constants.TARGET_ASPECT_RATIO;
 
         //This updates the FOV based on the resolution so everything still looks good at 4K vs 1080p for example
-        float verticalFOV = Camera.main.fieldOfView;
-        float horizontalFOV = 2.0f * Mathf.Atan(Mathf.Tan(verticalFOV * 0.5f) * Constants.TARGET_ASPECT_RATIO) * Mathf.Rad2Deg;
-        Camera.main.fieldOfView = horizontalFOV;
+        //float verticalFOV = Camera.main.fieldOfView;
+        //float horizontalFOV = 2.0f * Mathf.Atan(Mathf.Tan(verticalFOV * 0.5f) * Constants.TARGET_ASPECT_RATIO) * Mathf.Rad2Deg;
+        //Camera.main.fieldOfView = horizontalFOV;
     }
 
     public void ApplyGraphicsConfig()
