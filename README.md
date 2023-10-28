@@ -5,8 +5,12 @@ Unity project with the basic functionality for a card game - indented to be used
 ## Features 
 - Card Data class
 - Deck Data class
+- Clicking and dragging cards
+- Scriptable objects for cards
 
 ## Planned Additions
-- Clicking and dragging cards
+
 - Play Space and Deck Space
-- Scriptable objects for cards
+- Enemy Player
+- Ability to play cards 
+
