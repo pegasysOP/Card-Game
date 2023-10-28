@@ -43,7 +43,7 @@ public class Card : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.tag == "Card")
+            if (hitInfo.collider.CompareTag("Card"))
             {
                 isDragging = true;
                 offset = transform.position - hitInfo.point;
