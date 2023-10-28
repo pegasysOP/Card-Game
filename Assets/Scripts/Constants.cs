@@ -17,6 +17,7 @@ public static class Constants
     public const bool START_IN_FULLSCREEN = false;
     #endregion
 
+    //FIXME: These probably shouldn't be constants. However we may want some constants related to graphics
     #region Graphics
     public const int TEXTURE_WIDTH = 3840;
     public const int TEXTURE_HEIGHT = 2160;
