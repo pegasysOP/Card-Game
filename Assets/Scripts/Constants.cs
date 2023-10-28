@@ -14,7 +14,7 @@ public static class Constants
     #region Screen
     public const int WINDOW_WIDTH = 1920;
     public const int WINDOW_HEIGHT = 1080;
-    public const bool startInFullScreen = false;
+    public const bool START_IN_FULLSCREEN = false;
     #endregion
 
     #region Graphics
