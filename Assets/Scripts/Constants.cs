@@ -15,6 +15,7 @@ public static class Constants
     public const int WINDOW_WIDTH = 1920;
     public const int WINDOW_HEIGHT = 1080;
     public const bool START_IN_FULLSCREEN = false;
+    public const float TARGET_ASPECT_RATIO = 16f / 9f;
     #endregion
 
     //FIXME: These probably shouldn't be constants. However we may want some constants related to graphics
