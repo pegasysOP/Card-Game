@@ -11,9 +11,7 @@ public class Card : MonoBehaviour
     private Vector3 offset;
 
     //Potentially have a constants (config) file or store these in game manager eventually - Lewis
-    private const string CARD_PICK_UP_LAYER = "PickedUpCard";
-    private const string DEFAULT_LAYER = "Default";
-    private const string CARD_TAG = "Card";
+    
 
     #region Attributes
     public string Name { get { return cardBase.cardName; } }
@@ -44,11 +42,11 @@ public class Card : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            if (hitInfo.collider.CompareTag(CARD_TAG))
+            if (hitInfo.collider.CompareTag(Constants.CARD_TAG))
             {
                 isDragging = true;
                 offset = transform.position - hitInfo.point;
-                this.gameObject.GetComponent<SortingGroup>().sortingLayerName = CARD_PICK_UP_LAYER;
+                this.gameObject.GetComponent<SortingGroup>().sortingLayerName = Constants.CARD_PICK_UP_LAYER;
             }            
         }
 
@@ -57,7 +55,7 @@ public class Card : MonoBehaviour
     {
         isDragging = false;
 
-        this.gameObject.GetComponent<SortingGroup>().sortingLayerName = DEFAULT_LAYER;
+        this.gameObject.GetComponent<SortingGroup>().sortingLayerName = Constants.DEFAULT_LAYER;
 
         //Return card to its original z coordinate
         //Vector3 newPosition = this.transform.position;
