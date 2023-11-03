@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.VirtualTexturing;
 
 public class Config : MonoBehaviour
 {
