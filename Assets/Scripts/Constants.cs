@@ -9,6 +9,7 @@ public static class Constants
     public const string CARD_PICK_UP_LAYER = "PickedUpCard";
     public const string DEFAULT_LAYER = "Default";
     public const string CARD_TAG = "Card";
+    public const string MOVEMENT_PLANE_TAG = "MovementPlane";
     #endregion
 
     #region Screen
