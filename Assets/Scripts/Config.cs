@@ -16,7 +16,6 @@ public class Config : MonoBehaviour
     {
         instance = this;
         volume = 100;
-        shadowQuality = ShadowQuality.Low;
         ApplyConfig();
     }
 
