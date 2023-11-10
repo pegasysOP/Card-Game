@@ -17,6 +17,11 @@ public class Card
     public int Damage { get { return cardBase.Damage; } }
     #endregion
 
+    public Card(CardBase cardBase)
+    {
+        Init(cardBase);
+    }
+
     private void Init(CardBase cardBase)
     {
         this.cardBase = cardBase;

@@ -3,13 +3,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private Deck deck;
+    [SerializeField] BattleManager battleManager;
 
-    // for testing
-    [SerializeField] private List<Card> cardList;
+    [SerializeField] List<CardBase> testPlayerCards; // only for testing, don't use lists of cards
+    [SerializeField] List<CardBase> testOpponentCards;
 
-    private void Start()
+    private void Update()
     {
-        deck = new Deck(cardList);
+        // for testing
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            battleManager.StartBattle(new Deck(GenCards(testOpponentCards)), new Deck(GenCards(testOpponentCards)));
+        }
+    }
+
+    // once again I am asking you to understand this is only for testing
+    private List<Card> GenCards(List<CardBase> cardBases)
+    {
+        List<Card> cards = new List<Card>();
+
+        foreach (CardBase cardBase in cardBases)
+        {
+            cards.Add(new Card(cardBase));
+        }
+
+        return cards;
     }
 }
