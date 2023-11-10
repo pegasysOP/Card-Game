@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 
 public class Deck
@@ -25,6 +26,9 @@ public class Deck
 
         if (drawQueue == null)
             drawQueue = new Queue<Card>();
+
+        if (discardStack == null)
+            discardStack = new Stack<Card>();
 
         drawQueue.Clear();
 
@@ -86,5 +90,21 @@ public class Deck
         }
 
         return true;
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append($"Deck => Draw queue: ({drawQueue.Count}), Discard pile: ({discardStack.Count})\n");
+
+        sb.Append($"{cardSet.Count} cards > ");
+        foreach(Card card in cardSet)
+        {
+            sb.Append("[");
+            sb.Append(card.ToString());
+            sb.Append("], ");
+        }
+
+        return sb.ToString();
     }
 }

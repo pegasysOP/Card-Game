@@ -44,6 +44,9 @@ public class BattleManager : MonoBehaviour
         playerTurn = true;
         battleState = BattleState.Selection;
 
+        Debug.Log(playerDeck);
+        Debug.Log(opponentDeck);
+
         yield return null;
     }
 }

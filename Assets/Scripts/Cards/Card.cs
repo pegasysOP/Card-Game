@@ -29,4 +29,9 @@ public class Card
 
         // set sprite and other features of the card base
     }
+
+    public override string ToString()
+    {
+        return $"{cardBase.cardName}: (hp: {hp})";
+    }
 }
