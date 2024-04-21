@@ -20,11 +20,15 @@ public class CardMovementController : MonoBehaviour
         {
             foreach (RaycastHit hit in hits)
             {
-                if (hit.collider.CompareTag(Constants.CARD_TAG))
+                if (hit.collider.CompareTag(LayerDefines.DEFAULT_CARD_TAG))
                 {
-                    selectedCard = (CardObject)hit.collider.GetComponent<CardObject>();
-                    selectedCard.BeginDragging(hit.point);
-                    return;
+                    selectedCard = hit.collider.GetComponent<CardObject>();
+                    if (selectedCard != null)
+                    {
+                        selectedCard.BeginDragging(hit.point);
+                        return;
+                    }
+
                 }
             }
         }
@@ -50,7 +54,7 @@ public class CardMovementController : MonoBehaviour
         {
             foreach (RaycastHit hit in hits)
             {
-                if (hit.collider.CompareTag(Constants.MOVEMENT_PLANE_TAG))
+                if (hit.collider.CompareTag(LayerDefines.MOVEMENT_PLANE_TAG))
                     return hit.point;
             }
         }
