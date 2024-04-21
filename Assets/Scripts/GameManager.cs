@@ -8,6 +8,18 @@ public class GameManager : MonoBehaviour
     [SerializeField] List<CardBase> testPlayerCards; // only for testing, don't use lists of cards
     [SerializeField] List<CardBase> testOpponentCards;
 
+    private void Start()
+    {
+        // this is just for event testing purposes
+        EventManager.AddCardEventListener(OnCardEvent);
+    }
+
+    // also just for testing events
+    private void OnCardEvent(CardEventArgs cardEventArgs)
+    {
+        Debug.Log($"CARD EVENT: {cardEventArgs.EventType}");
+    }
+
     private void Update()
     {
         // for testing

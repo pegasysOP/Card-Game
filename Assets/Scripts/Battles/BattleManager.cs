@@ -29,10 +29,22 @@ public class BattleManager : MonoBehaviour
     private IEnumerator InitialiseBattle()
     {
         playerDeck.ShuffleSet();
+        EventManager.InvokeCardEvent(new CardEventArgs(true, CardEventType.HandShuffled));
         opponentDeck.ShuffleSet();
+        EventManager.InvokeCardEvent(new CardEventArgs(false, CardEventType.HandShuffled));
 
-        playerDeck.Draw(out playerHand, /*arbitrarily chosen :)*/ 3);
-        opponentDeck.Draw(out opponentHand, /*arbitrarily chosen :)*/ 3);
+
+        playerHand = new List<Card>();
+        List<Card> drawnCards = new List<Card>();
+        playerDeck.Draw(out drawnCards, /*arbitrarily chosen :)*/ 3);
+        EventManager.InvokeCardEvent(new CardEventArgs(drawnCards.ToArray(), true, CardEventType.CardDrawn));
+        playerHand.AddRange(drawnCards);
+
+        opponentHand = new List<Card>();
+        drawnCards = new List<Card>();
+        opponentDeck.Draw(out drawnCards, /*arbitrarily chosen :)*/ 3);
+        EventManager.InvokeCardEvent(new CardEventArgs(drawnCards.ToArray(), false, CardEventType.CardDrawn));
+        opponentHand.AddRange(drawnCards);
 
         yield return BeginPlayerTurn();
     }
