@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,33 +13,14 @@ public class GameLogPanel : MonoBehaviour
 
     private List<GameLogComponent> logComponents = new List<GameLogComponent>();
 
-    private void Update()
+    private void OnEnable()
     {
-        // for testing
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            switch (Random.Range(0, 6))
-            {
-                case 0:
-                    AddLogComponent("You drew a card");
-                    break;
-                case 1:
-                    AddLogComponent("You played a card");
-                    break;
-                case 2:
-                    AddLogComponent("You discarded a card");
-                    break;
-                case 3:
-                    AddLogComponent("Enemy drew a card");
-                    break;
-                case 4:
-                    AddLogComponent("Enemy played a card");
-                    break;
-                case 5:
-                    AddLogComponent("Enemy discarded a card");
-                    break;
-            }
-        }
+        EventManager.AddCardEventListener(OnCardEvent);
+    }
+    
+    private void OnDisable()
+    {
+        EventManager.RemoveCardEventListener(OnCardEvent);
     }
 
     private void AddLogComponent(string message)
@@ -64,5 +46,53 @@ public class GameLogPanel : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         scrollRect.verticalNormalizedPosition = 0f;
+    }
+
+    private void OnCardEvent(CardEventArgs eventArgs)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append("[CARD EVENT] > ");
+
+        switch(eventArgs.EventType)
+        {
+            case CardEventType.CardDrawn:
+                stringBuilder.Append(eventArgs.IsPlayer ? "Player" : "Enemy").Append(" drew card(s): ").Append(GetCardsString(eventArgs));
+                break;
+            case CardEventType.CardDiscarded:
+                stringBuilder.Append(eventArgs.IsPlayer ? "Player" : "Enemy").Append(" discarded card(s): ").Append(GetCardsString(eventArgs));
+                break;
+            case CardEventType.CardPlayed:
+                stringBuilder.Append(eventArgs.IsPlayer ? "Player" : "Enemy").Append(" played card(s): ").Append(GetCardsString(eventArgs));
+                break;
+            case CardEventType.CardAdded:
+                stringBuilder.Append(eventArgs.IsPlayer ? "Player" : "Enemy").Append(" added card(s) to deck: ").Append(GetCardsString(eventArgs));
+                break;
+            case CardEventType.HandShuffled:
+                stringBuilder.Append(eventArgs.IsPlayer ? "Player" : "Enemy").Append(" shuffled their hand ");
+                break;
+        }
+
+        AddLogComponent(stringBuilder.ToString());
+    }
+
+    private string GetCardsString(CardEventArgs eventArgs)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+
+        if (eventArgs.HasMainCard())
+            stringBuilder.Append(string.Format("<{0}> ", eventArgs.Card));
+
+        if (eventArgs.HasCardList())
+        {
+            for (int i = 0; i < eventArgs.Cards.Length; i++)
+            {
+                stringBuilder.Append(eventArgs.Cards[i]);
+
+                if (i < eventArgs.Cards.Length - 1)
+                    stringBuilder.Append(", ");
+            }
+        }
+        
+        return stringBuilder.ToString();
     }
 }

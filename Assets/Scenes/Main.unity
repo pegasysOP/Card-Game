@@ -292,7 +292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &329522274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,17 +618,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 329522277}
     m_Modifications:
+    - target: {fileID: 2216535066179158954, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216535066179158954, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2216535066179158954, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -20
+      objectReference: {fileID: 0}
     - target: {fileID: 3493435786883585301, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
       propertyPath: m_Name
       value: Game Log Panel
       objectReference: {fileID: 0}
     - target: {fileID: 4002736005008972672, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4002736005008972672, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4722479597908225849, guid: 5b190fd698c47d745a9d250786b513d8, type: 3}
       propertyPath: m_Pivot.x
@@ -1263,6 +1275,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 1056130770}
+  uiCanvas: {fileID: 329522276}
   testPlayerCards:
   - {fileID: 11400000, guid: 4d32f2b5d847610458ed5a35f3ae4375, type: 2}
   - {fileID: 11400000, guid: 4d32f2b5d847610458ed5a35f3ae4375, type: 2}

@@ -3,21 +3,15 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] BattleManager battleManager;
+    [SerializeField] private BattleManager battleManager;
+    [SerializeField] private Canvas uiCanvas;
 
-    [SerializeField] List<CardBase> testPlayerCards; // only for testing, don't use lists of cards
-    [SerializeField] List<CardBase> testOpponentCards;
+    [SerializeField] private List<CardBase> testPlayerCards; // only for testing, don't use lists of cards
+    [SerializeField] private List<CardBase> testOpponentCards;
 
     private void Start()
     {
-        // this is just for event testing purposes
-        EventManager.AddCardEventListener(OnCardEvent);
-    }
-
-    // also just for testing events
-    private void OnCardEvent(CardEventArgs cardEventArgs)
-    {
-        Debug.Log($"CARD EVENT: {cardEventArgs.EventType}");
+        uiCanvas.gameObject.SetActive(true);
     }
 
     private void Update()

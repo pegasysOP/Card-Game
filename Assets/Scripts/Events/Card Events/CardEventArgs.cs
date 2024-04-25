@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 public class CardEventArgs : EventArgs
 {
@@ -59,5 +60,14 @@ public class CardEventArgs : EventArgs
     public bool HasMainCard()
     {
         return Card != null;
+    }
+
+    /// <summary>
+    /// Checks if there is a card list for this event
+    /// </summary>
+    /// <returns>True if there is a card list</returns>
+    public bool HasCardList()
+    {
+        return Cards != null && Cards.Length > 0;
     }
 }
