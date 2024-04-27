@@ -1,6 +1,6 @@
-# Card Engine 
+# Card Game
 
-Unity project with the basic functionality for a card game - indented to be used as a base for future projects.
+Unity Project for an in development card game
 
 ## Features 
 - Card Data class
