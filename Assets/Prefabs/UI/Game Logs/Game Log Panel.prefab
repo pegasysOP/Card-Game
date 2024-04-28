@@ -305,7 +305,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -20, y: -40}
-  m_SizeDelta: {x: 450, y: 150}
+  m_SizeDelta: {x: 450, y: 200}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &369838849979084341
 MonoBehaviour:
@@ -322,7 +322,7 @@ MonoBehaviour:
   scrollRect: {fileID: 6694150346023849923}
   contentTransform: {fileID: 5076745447859245981}
   logComponentPrefab: {fileID: 2116833580521766688, guid: 28e188dc34ead004481a0d68a1fc7a71, type: 3}
-  maxLogCount: 25
+  maxLogCount: 50
 --- !u!1 &3790064833015300463
 GameObject:
   m_ObjectHideFlags: 0
