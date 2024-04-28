@@ -5,6 +5,7 @@ public class EventManager : MonoBehaviour
     public static EventManager Instance { get; private set; }
 
     private CardEventSystem cardEventSystem;
+    private MatchEventSystem matchEventSystem;
 
     private void Awake()
     {
@@ -19,7 +20,10 @@ public class EventManager : MonoBehaviour
     private void StartEventSystems()
     {
         cardEventSystem = new CardEventSystem();
+        matchEventSystem = new MatchEventSystem();
     }
+
+    #region Cards Events
 
     public static void InvokeCardEvent(CardEventArgs eventArgs)
     {
@@ -35,4 +39,25 @@ public class EventManager : MonoBehaviour
     {
         Instance.cardEventSystem.RemoveListener(eventListener);
     }
+
+    #endregion
+
+    #region Match Events
+
+    public static void InvokeMatchEvent(MatchEventArgs eventArgs)
+    {
+        Instance.matchEventSystem.InvokeEvent(eventArgs);
+    }
+
+    public static void AddMatchEventListener(MatchEventListener eventListener)
+    {
+        Instance.matchEventSystem.AddListener(eventListener);
+    }
+
+    public static void RemoveMatchEventListener(MatchEventListener eventListener)
+    {
+        Instance.matchEventSystem.RemoveListener(eventListener);
+    }
+
+    #endregion
 }

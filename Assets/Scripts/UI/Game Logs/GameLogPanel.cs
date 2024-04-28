@@ -16,11 +16,13 @@ public class GameLogPanel : MonoBehaviour
     private void OnEnable()
     {
         EventManager.AddCardEventListener(OnCardEvent);
+        EventManager.AddMatchEventListener(OnMatchEvent);
     }
     
     private void OnDisable()
     {
         EventManager.RemoveCardEventListener(OnCardEvent);
+        EventManager.RemoveMatchEventListener(OnMatchEvent);
     }
 
     private void AddLogComponent(string message)
@@ -51,7 +53,7 @@ public class GameLogPanel : MonoBehaviour
     private void OnCardEvent(CardEventArgs eventArgs)
     {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.Append("[CARD EVENT] > ");
+        stringBuilder.Append("[CARD] > ");
 
         switch(eventArgs.EventType)
         {
@@ -69,6 +71,30 @@ public class GameLogPanel : MonoBehaviour
                 break;
             case CardEventType.HandShuffled:
                 stringBuilder.Append(eventArgs.IsPlayer ? "Player" : "Enemy").Append(" shuffled their hand ");
+                break;
+        }
+
+        AddLogComponent(stringBuilder.ToString());
+    }
+
+    private void OnMatchEvent(MatchEventArgs eventArgs)
+    {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.Append("[MATCH] > ");
+
+        switch (eventArgs.EventType)
+        {
+            case MatchEventType.PlayerTurnStart:
+                stringBuilder.Append("Player turn started");
+                break;
+            case MatchEventType.PlayerTurnEnd:
+                stringBuilder.Append("Player turn ended");
+                break;
+            case MatchEventType.EnemyTurnStart:
+                stringBuilder.Append("Enemy turn started");
+                break;
+            case MatchEventType.EnemyTurnEnd:
+                stringBuilder.Append("Enemy turn ended");
                 break;
         }
 

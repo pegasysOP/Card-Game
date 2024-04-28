@@ -51,13 +51,10 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator BeginPlayerTurn()
     {
-        Debug.Log("Beginning player turn");
-
         playerTurn = true;
         battleState = BattleState.Selection;
 
-        Debug.Log(playerDeck);
-        Debug.Log(opponentDeck);
+        EventManager.InvokeMatchEvent(new MatchEventArgs(MatchEventType.PlayerTurnStart));
 
         yield return null;
     }

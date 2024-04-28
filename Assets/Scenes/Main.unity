@@ -389,7 +389,7 @@ GameObject:
   - component: {fileID: 329522275}
   - component: {fileID: 329522274}
   m_Layer: 5
-  m_Name: UI Canvas
+  m_Name: HUD Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1255,7 +1255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   battleManager: {fileID: 1056130770}
-  uiCanvas: {fileID: 329522276}
+  hudCanvas: {fileID: 329522276}
   testPlayerCards:
   - {fileID: 11400000, guid: 4d32f2b5d847610458ed5a35f3ae4375, type: 2}
   - {fileID: 11400000, guid: 4d32f2b5d847610458ed5a35f3ae4375, type: 2}

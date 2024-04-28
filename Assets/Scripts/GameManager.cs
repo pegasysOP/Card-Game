@@ -4,14 +4,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private BattleManager battleManager;
-    [SerializeField] private Canvas uiCanvas;
+    [SerializeField] private Canvas hudCanvas;
 
     [SerializeField] private List<CardBase> testPlayerCards; // only for testing, don't use lists of cards
     [SerializeField] private List<CardBase> testOpponentCards;
 
     private void Start()
     {
-        uiCanvas.gameObject.SetActive(true);
+        hudCanvas.gameObject.SetActive(true);
     }
 
     private void Update()
