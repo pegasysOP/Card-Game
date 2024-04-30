@@ -7,12 +7,12 @@ public class BattleManager : MonoBehaviour
 {
     // TODO: this should be changed to be a neater, non direct way of referencing the button
     [SerializeField] private Button endTurnButton;
+    [SerializeField] private Transform cardContainer;
+    [SerializeField] private PlaceholderCard placeholderCardPrefab;
+    private List<PlaceholderCard> placeholderCards;
 
     private BattleState battleState = BattleState.None;
-    public BattleState BattleState { get { return battleState; } }
-
-    private bool playerTurn = true; // true if player, false if opponent
-    public bool PlayerTurn { get { return playerTurn; } }
+    private bool playerTurn = true;
 
     private Deck playerDeck;
     private Deck opponentDeck;
@@ -70,6 +70,8 @@ public class BattleManager : MonoBehaviour
         EventManager.InvokeCardEvent(new CardEventArgs(drawnCards.ToArray(), true, CardEventType.CardDrawn));
         playerHand.AddRange(drawnCards);
 
+        ShowPlayerCards();
+
         battleState = BattleState.Selection;
         yield return null;
     }
@@ -78,6 +80,9 @@ public class BattleManager : MonoBehaviour
     {
         if (!playerTurn || battleState != BattleState.Selection)
             return;
+
+        ClearPlayerCards();
+        endTurnButton.gameObject.SetActive(false);
 
         StartCoroutine(BeginOpponentTurn());
     }
@@ -101,8 +106,47 @@ public class BattleManager : MonoBehaviour
     private IEnumerator OpponentCardSelection()
     {
         // pick opponents moves
+
+
         yield return new WaitForSeconds(3f);
         yield return BeginPlayerTurn();
     }
 
+    private void PlayCard(Card card)
+    {
+        // activate card
+        EventManager.InvokeCardEvent(new CardEventArgs(card, true, CardEventType.CardPlayed));
+
+        playerHand.Remove(card);
+
+        endTurnButton.gameObject.SetActive(true);
+    }
+
+    private void ShowPlayerCards()
+    {
+        if (placeholderCards == null)
+            placeholderCards = new List<PlaceholderCard>();
+
+        for (int i = 0; i < playerHand.Count; i++)
+        {
+            PlaceholderCard card = Instantiate(placeholderCardPrefab, cardContainer);
+            placeholderCards.Add(card);
+            card.Init(playerHand[i], i);
+            card.OnSelected.AddListener(PlayCard);
+        }
+    }
+
+    private void ClearPlayerCards()
+    {
+        if (placeholderCards != null)
+        {
+            for (int i = placeholderCards.Count - 1; i >= 0; i--)
+            {
+                Destroy(placeholderCards[i].gameObject);
+                placeholderCards.RemoveAt(i);
+            }
+        }
+
+        placeholderCards = new List<PlaceholderCard>();
+    }
 }
